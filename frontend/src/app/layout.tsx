@@ -1,15 +1,16 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
-import "./globals.css";
+import {Inter, Roboto} from "next/font/google";
+import "@/app/globals.css";
 import '@radix-ui/themes/styles.css';
 import AppWalletProvider from "@/app/AppWalletProvider";
+import {Header} from "@/components/Header";
 
-const inter = Inter({ subsets: ["latin"] });
+const roboto = Roboto({weight: ["400", "700"], subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "thirdweb SDK + Next starter",
+  title: "SolBNB",
   description:
-    "Starter template for using thirdweb SDK with Next.js App router",
+    "Decentralized renting",
 };
 
 export default function RootLayout({
@@ -19,8 +20,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>
-        <AppWalletProvider>{children}</AppWalletProvider>
+      <body className={roboto.className}>
+        <AppWalletProvider>
+            <Header/>
+            {children}
+        </AppWalletProvider>
       </body>
     </html>
   );
